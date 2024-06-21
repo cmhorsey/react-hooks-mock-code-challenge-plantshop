@@ -13,11 +13,8 @@ function PlantList({ plants, setPlants }) {
     return (
       <PlantCard
         key={plant.id}
-        name={plant.name}
-        image={plant.image}
-        price={plant.price}
         plants={plants}
-        id={plant.id}
+        plant={plant}
         onUpdatePlant={handleUpdatePlant}
         setPlants={setPlants}
       />

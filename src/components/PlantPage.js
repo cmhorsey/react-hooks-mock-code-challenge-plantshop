@@ -22,7 +22,11 @@ function PlantPage() {
 
   return (
     <main>
-      <NewPlantForm plants={plants} setPlants={setPlants} />
+      <NewPlantForm
+        plants={plants}
+        setPlants={setPlants}
+        originalPlants={originalPlants}
+      />
       <Search
         plants={plants}
         setPlants={setPlants}

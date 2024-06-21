@@ -1,14 +1,7 @@
 import React, { useState } from "react"
 
-function PlantCard({
-  name,
-  image,
-  price,
-  id,
-  onUpdatePlant,
-  setPlants,
-  plants,
-}) {
+function PlantCard({ onUpdatePlant, setPlants, plants, plant }) {
+  const { name, image, price, id } = plant
   const [soldOut, setSoldOut] = useState(true)
   const [newPrice, setNewPrice] = useState(price)
 
@@ -70,7 +63,7 @@ function PlantCard({
           type="number"
           name="price"
           step="0.01"
-          placeholder="Price"
+          placeholder="Change price..."
           value={newPrice}
           onChange={handlePriceOnChange}
         />

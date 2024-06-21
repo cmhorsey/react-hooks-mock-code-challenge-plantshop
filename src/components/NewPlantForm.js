@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-function NewPlantForm({ plants, setPlants }) {
+function NewPlantForm({ originalPlants, setPlants }) {
   const [formData, setFormData] = useState({
     name: "",
     image: "",
@@ -16,7 +16,6 @@ function NewPlantForm({ plants, setPlants }) {
 
   function handleSubmit(event) {
     event.preventDefault()
-    console.log(formData)
     const plantData = {
       name: formData.name,
       image: formData.image,
@@ -34,7 +33,7 @@ function NewPlantForm({ plants, setPlants }) {
   }
 
   function handleAddPlant(newPlant) {
-    setPlants([...plants, newPlant])
+    setPlants([...originalPlants, newPlant])
   }
 
   return (
