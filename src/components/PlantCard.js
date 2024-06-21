@@ -1,6 +1,14 @@
 import React, { useState } from "react"
 
-function PlantCard({ name, image, price, id, onUpdatePlant }) {
+function PlantCard({
+  name,
+  image,
+  price,
+  id,
+  onUpdatePlant,
+  setPlants,
+  plants,
+}) {
   const [soldOut, setSoldOut] = useState(true)
   const [newPrice, setNewPrice] = useState(price)
 
@@ -30,6 +38,19 @@ function PlantCard({ name, image, price, id, onUpdatePlant }) {
       })
   }
 
+  function handleDeleteClick() {
+    fetch(`http://localhost:6001/plants/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then(handleDelete(id))
+  }
+
+  function handleDelete(deletedPlant) {
+    const updatedListings = plants.filter((plant) => plant.id !== deletedPlant)
+    setPlants(updatedListings)
+  }
+
   return (
     <li className="card">
       <img src={image} alt={name} />
@@ -42,6 +63,8 @@ function PlantCard({ name, image, price, id, onUpdatePlant }) {
       ) : (
         <button onClick={handleSoldOutClick}>Out of Stock</button>
       )}
+      <br></br>
+      <button onClick={handleDeleteClick}>Delete Plant</button>
       <form onSubmit={handlePriceChangeClick}>
         <input
           type="number"

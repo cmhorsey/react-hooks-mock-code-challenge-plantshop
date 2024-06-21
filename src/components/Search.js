@@ -10,7 +10,7 @@ function Search({ plants, setPlants, originalPlants }) {
       setPlants(originalPlants)
     } else {
       const plantsToDisplay = plants.filter((plant) =>
-        plant.name.includes(newSearchValue)
+        plant.name.includes(search)
       )
       setPlants(plantsToDisplay)
     }

@@ -19,6 +19,7 @@ function PlantList({ plants, setPlants }) {
         plants={plants}
         id={plant.id}
         onUpdatePlant={handleUpdatePlant}
+        setPlants={setPlants}
       />
     )
   })
