@@ -28,7 +28,7 @@ function PlantPage() {
         setPlants={setPlants}
         originalPlants={originalPlants}
       />
-      <PlantList plants={plants} />
+      <PlantList plants={plants} setPlants={setPlants} />
     </main>
   )
 }
