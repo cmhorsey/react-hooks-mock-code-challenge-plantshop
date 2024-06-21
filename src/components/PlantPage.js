@@ -5,11 +5,15 @@ import Search from "./Search"
 
 function PlantPage() {
   const [plants, setPlants] = useState([])
+  const [originalPlants, setOriginalPlants] = useState([])
 
   const getPlants = () => {
     fetch("http://localhost:6001/plants")
       .then((res) => res.json())
-      .then((plants) => setPlants(plants))
+      .then((plants) => {
+        setPlants(plants)
+        setOriginalPlants(plants)
+      })
   }
 
   useEffect(() => {
@@ -19,7 +23,11 @@ function PlantPage() {
   return (
     <main>
       <NewPlantForm plants={plants} setPlants={setPlants} />
-      <Search />
+      <Search
+        plants={plants}
+        setPlants={setPlants}
+        originalPlants={originalPlants}
+      />
       <PlantList plants={plants} />
     </main>
   )
